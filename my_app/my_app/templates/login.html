@@ -34,20 +34,21 @@
             </header>
             <!--header end-->
 
-            <form class="form-login" action="index.html">
+            <form method="POST" class="form-login">
+                {% csrf_token %}
                 <h2 class="form-login-heading">Se connecter maintenant</h2>
                 <div class="login-wrap">
-                    <input type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
+                    <input name="uname" type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
                     <br>
-                    <input type="password" class="form-control" placeholder="Mot de passe">
+                    <input name="pwd" type="password" class="form-control" placeholder="Mot de passe">
                     <br>
-                    <select class="form-control">
-                        <option>Administrateur</option>
-                        <option>Enseignant</option>
-                        <option>Elève</option>
+                    <select name="id_type" class="form-control" required>
+                        <option value="1" >Administrateur</option>
+                        <option value="2" >Enseignant</option>
+                        <option value="3" >Elève</option>
                     </select>
                     <br>
-                    <button class="btn btn-theme btn-block" href="index.html" type="submit"> SE CONNECTER</button>
+                    <button class="btn btn-theme btn-block" name="submit" value="Login" type="submit"> SE CONNECTER</button>
                 </div>
             </form>
         </div>

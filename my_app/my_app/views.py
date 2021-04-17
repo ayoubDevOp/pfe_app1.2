@@ -2,9 +2,23 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
+from django.http import HttpResponse
 
 def login(request):
-    return render(request, 'login.html', {})
+	if request.method == 'POST':
+		uname = request.POST.get('uname')
+		pwd = request.POST.get('pwd')
+		id_type = request.POST.get('id_type')
+		if id_type == '1':
+			return HttpResponse('admin :'+uname +' '+pwd+' '+id_type)
+		elif id_type == '2':
+			return HttpResponse('enseignant :'+uname +' '+pwd+' '+id_type)
+		elif id_type == '3':
+			return HttpResponse('eleve :'+uname +' '+pwd+' '+id_type)
+		else:
+			return HttpResponse('no id_type value returned'+uname +' '+pwd+' ')
+	else:
+		return render(request, 'login.html', {})
 
 def eleve(request):
     return render(request, 'eleve.html', {})
