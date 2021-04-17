@@ -3,6 +3,70 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 
+def login(request):
+    return render(request, 'login.html', {})
+
+def eleve(request):
+    return render(request, 'eleve.html', {})
+
+def eleve_profile(request):
+    return render(request, 'eleve_profile.html', {})
+
+def eleve_machine(request):
+    return render(request, 'eleve_machine.html', {})
+
+def eleve_mail(request):
+    return render(request, 'eleve_mail.html', {})
+
+def enseignant(request):
+    return render(request, 'enseignant.html', {})
+
+def enseignant_exercices(request):
+    return render(request, 'enseignant_exercices.html', {})
+
+def enseignant_instances(request):
+    return render(request, 'enseignant_instances.html', {})
+
+def enseignant_images(request):
+    vm_result = Virtualmachine.objects.all()
+    return render(request, 'enseignant_images.html', { 'vm_result' : vm_result })
+
+def enseignant_supervision(request):
+    return render(request, 'enseignant_supervision.html', {})
+
+def enseignant_mail(request):   #recieved
+    msgs_result = Message.objects.filter(type=0)
+    return render(request, 'enseignant_mail.html', {'msgs_result' : msgs_result})
+
+def enseignant_mail_sent(request):   #sent
+    msgs_result = Message.objects.filter(type=1)
+    return render(request, 'enseignant_mail_sent.html', {'msgs_result' : msgs_result})
+
+def enseignant_mail_compose(request):
+    """if request.method == "POST":
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            subject = form.cleaned_data.get("subject")
+            content = form.cleaned_data.get("content")
+            return redirect("enseignant/mail")
+        else:
+            msg = 'Form is not valid'
+    else :
+        form = MessageForm()
+    ctx = {'form' : form}"""
+    return render(request, 'enseignant_mail_compose.html' , ctx)
+
+def adminstrator(request):
+    #eleve_result = Eleve.objects.filter(id_eleve=1)
+    eleve_result = Eleve.objects.all()
+    enseignants_result = Enseignant.objects.all()
+    score_result = Score.objects.all()
+    ctx = {'eleve_result' : eleve_result,
+            'enseignants_result': enseignants_result,
+            "score_result":score_result}
+    return render(request,'admin.html',ctx)
+
 class EleveAPI(viewsets.ModelViewSet):
     serializer_class = EleveSerializer
     queryset = Eleve.objects.all()
