@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>empCR login</title>
+
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+
+    <!-- Favicons -->
+    {% load static %}
+    <link href="{% static 'img/emp.jpg' %}" rel="icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href= "{% static 'css/style.css'%}" rel="stylesheet">
+    <link href= "{% static 'css//style-responsive.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <div id="login-page">
+        <div class="container">
+            <!--header start-->
+            <header class="header black-bg">
+                <!--logo start-->
+                <a href="login.html" class="logo"><b>EMP<span>CR</span></b></a>
+                <!--logo end-->
+            </header>
+            <!--header end-->
+
+            <form class="form-login" action="index.html">
+                <h2 class="form-login-heading">Se connecter maintenant</h2>
+                <div class="login-wrap">
+                    <input type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
+                    <br>
+                    <input type="password" class="form-control" placeholder="Mot de passe">
+                    <br>
+                    <select class="form-control">
+                        <option>Administrateur</option>
+                        <option>Enseignant</option>
+                        <option>Elève</option>
+                    </select>
+                    <br>
+                    <button class="btn btn-theme btn-block" href="index.html" type="submit"> SE CONNECTER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <!--
+        inutile
+        <script src= "{% static 'jquery/jquery.min.js' %}" ></script>
+        <script src= "{% static 'js/bootstrap.min.js' %}" ></script>
+    -->
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+</body>
+
+</html>
