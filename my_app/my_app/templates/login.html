@@ -33,24 +33,32 @@
 				<!--logo end-->
 			</header>
 			<!--header end-->
-
-			<form method="POST" class="form-login">
-				{% csrf_token %}
-				<h2 class="form-login-heading">Se connecter maintenant</h2>
-				<div class="login-wrap">
-					<input name="uname" type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
-					<br>
-					<input name="pwd" type="password" class="form-control" placeholder="Mot de passe">
-					<br>
-					<select name="id_type" class="form-control" required>
-						<option value="1" >Administrateur</option>
-						<option value="2" >Enseignant</option>
-						<option value="3" >Elève</option>
-					</select>
-					<br>
-					<button class="btn btn-theme btn-block" name="submit" value="Login" type="submit"> SE CONNECTER</button>
+				<div class = "content-panel col-md-8" style="margin-top: 100px">
+					<div class="col-md-12	">
+						<h2 contenteditable="true">EMP CR</h2>
+						<h3 contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+					</div>
 				</div>
-			</form>
+
+			<div class="col-md-4 ">
+				<form method="POST" class="form-login">
+					{% csrf_token %}
+					<h2 class="form-login-heading">Se connecter maintenant</h2>
+					<div class="login-wrap">
+						<input name="uname" type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
+						<br>
+						<input name="pwd" type="password" class="form-control" placeholder="Mot de passe">
+						<br>
+						<select name="id_type" class="form-control" required>
+							<option value="1" >Administrateur</option>
+							<option value="2" >Enseignant</option>
+							<option value="3" >Elève</option>
+						</select>
+						<br>
+						<button class="btn btn-theme btn-block" name="submit" value="Login" type="submit"> SE CONNECTER</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!-- js placed at the end of the document so the pages load faster -->

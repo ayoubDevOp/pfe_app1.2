@@ -51,5 +51,6 @@ urlpatterns = [
 	path('enseignant/mail_sent', views.enseignant_mail_sent, name = 'enseignant_mail_sent'),
 	path('enseignant/mail_compose', views.enseignant_mail_compose, name = 'enseignant_mail_compose'),
 	path('', views.login, name='home'),
-	path('logout/', views.logout, name='logout'),
+	path('logout_elv/', views.logout_elv, name='logout_elv'),
+	path('logout_ens/', views.logout_ens, name='logout_ens'),
 ]

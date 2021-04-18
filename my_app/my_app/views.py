@@ -17,7 +17,8 @@ def login(request):
 			if check_user is None:
 				return HttpResponse('Username not found')
 			elif check_user.pwd_ens == pwd:
-				request.session['user'] = uname
+				request.session['ens'] = uname
+				print('login successed : '+request.session['ens'])
 				return redirect('enseignant/acueil')
 			else:
 				return HttpResponse('Please enter valid Username or Password.')
@@ -27,7 +28,7 @@ def login(request):
 			if check_user is None:
 				return HttpResponse('Username not found')
 			elif check_user.pwd_elv == pwd:
-				request.session['user'] = uname
+				request.session['elv'] = uname
 				return redirect('eleve/acueil')
 			else:
 				return HttpResponse('Please enter valid Username or Password.')
@@ -39,7 +40,7 @@ def login(request):
 
 def eleve(request):
 	try:
-		user = request.session['user']
+		user = request.session['elv']
 		check_user_f = Eleve.objects.filter(username_elv=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -50,7 +51,7 @@ def eleve(request):
 
 def eleve_profile(request):
 	try:
-		user = request.session['user']
+		user = request.session['elv']
 		check_user_f = Eleve.objects.filter(username_elv=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -61,7 +62,7 @@ def eleve_profile(request):
 
 def eleve_machine(request):
 	try:
-		user = request.session['user']
+		user = request.session['elv']
 		check_user_f = Eleve.objects.filter(username_elv=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -71,7 +72,7 @@ def eleve_machine(request):
 
 def eleve_mail(request):
 	try:
-		user = request.session['user']
+		user = request.session['elv']
 		check_user_f = Eleve.objects.filter(username_elv=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -81,7 +82,7 @@ def eleve_mail(request):
 
 def enseignant(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -91,7 +92,7 @@ def enseignant(request):
 
 def enseignant_exercices(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -101,7 +102,7 @@ def enseignant_exercices(request):
 
 def enseignant_instances(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -111,7 +112,7 @@ def enseignant_instances(request):
 
 def enseignant_images(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		vm_result = Virtualmachine.objects.all()
@@ -124,7 +125,7 @@ def enseignant_images(request):
 
 def enseignant_supervision(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -134,7 +135,7 @@ def enseignant_supervision(request):
 
 def enseignant_mail(request):   #recieved
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		msgs_result = Message.objects.filter(type=0)
@@ -146,7 +147,7 @@ def enseignant_mail(request):   #recieved
 
 def enseignant_mail_sent(request):   #sent
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user,
@@ -157,7 +158,7 @@ def enseignant_mail_sent(request):   #sent
 
 def enseignant_mail_compose(request):
 	try:
-		user = request.session['user']
+		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		ctx = {'check_user' : check_user}
@@ -187,9 +188,17 @@ def adminstrator(request):
 			"score_result":score_result}
 	return render(request,'admin.html',ctx)
 
-def logout(request):
+def logout_elv(request):
 	try:
-		del request.session['user']
+		del request.session['elv']
+	except:
+		return redirect('/')
+	return redirect('/')
+
+
+def logout_ens(request):
+	try:
+		del request.session['ens']
 	except:
 		return redirect('/')
 	return redirect('/')
