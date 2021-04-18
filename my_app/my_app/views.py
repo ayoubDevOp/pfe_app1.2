@@ -38,32 +38,46 @@ def login(request):
 		return render(request, 'login.html', {})
 
 def eleve(request):
-	user = request.session['user']
-	check_user_f = Eleve.objects.filter(username_elv=user)
-	check_user = check_user_f.first()
-	ctx = {'check_user' : check_user}
-	return render(request, 'eleve.html', ctx)
+	try:
+		user = request.session['user']
+		check_user_f = Eleve.objects.filter(username_elv=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'eleve.html', ctx)
+	except:
+		return HttpResponse('login requiered')
+
 
 def eleve_profile(request):
-	user = request.session['user']
-	check_user_f = Eleve.objects.filter(username_elv=user)
-	check_user = check_user_f.first()
-	ctx = {'check_user' : check_user}
-	return render(request, 'eleve_profile.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Eleve.objects.filter(username_elv=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'eleve_profile.html', ctx)
+	except:
+		return HttpResponse('login requiered')
+
 
 def eleve_machine(request):
-	user = request.session['user']
-	check_user_f = Eleve.objects.filter(username_elv=user)
-	check_user = check_user_f.first()
-	ctx = {'check_user' : check_user}
-	return render(request, 'eleve_machine.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Eleve.objects.filter(username_elv=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'eleve_machine.html', ctx)
+	except:
+		return HttpResponse('login requiered')
 
 def eleve_mail(request):
-	user = request.session['user']
-	check_user_f = Eleve.objects.filter(username_elv=user)
-	check_user = check_user_f.first()
-	ctx = {'check_user' : check_user}
-	return render(request, 'eleve_mail.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Eleve.objects.filter(username_elv=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'eleve_mail.html', ctx)
+	except:
+		return HttpResponse('login requiered')	
 
 def enseignant(request):
 	return render(request, 'enseignant.html', {})

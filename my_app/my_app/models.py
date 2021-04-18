@@ -31,7 +31,7 @@ class Groupe(models.Model):
 		return self.desig_grp
 
 class Eleve(models.Model): 
-	username_elv = models.CharField(db_column='USERNAME_ELV', max_length=255, blank=True, null=True) 
+	username_elv = models.CharField(db_column='USERNAME_ELV', max_length=255, blank=True, null=True, unique=True) 
 	nom_elv = models.CharField(db_column='NOM_ELV', max_length=255, blank=True, null=True)  
 	pwd_elv = models.CharField(db_column='PWD_ELV', max_length=255, blank=True, null=True)   
 	date_nai_elv = models.DateField(db_column='DATE_NAI_ELV', blank=True, null=True)  
@@ -42,10 +42,10 @@ class Eleve(models.Model):
 		db_table = 'ELEVE'
 		
 	def __str__(self):
-		return self.nom_elv
+		return self.username_elv
 
 class Enseignant(models.Model):
-	username_ens = models.CharField(db_column='USERNAME_ENS', max_length=255, blank=True, null=True) 
+	username_ens = models.CharField(db_column='USERNAME_ENS', max_length=255, blank=True, null=True, unique=True) 
 	nom_ens = models.CharField(db_column='NOM_ENS', max_length=255, blank=True, null=True)  
 	pwd_ens = models.CharField(db_column='PWD_ENS', max_length=255, blank=True, null=True)  
 	date_nai_ens = models.DateField(db_column='DATE_NAI_ENS', blank=True, null=True)  
@@ -55,7 +55,7 @@ class Enseignant(models.Model):
 		db_table = 'ENSEIGNANT'
 
 	def __str__(self):
-		return self.nom_ens
+		return self.username_ens
 
 class Message(models.Model):
 	subject = models.CharField(db_column='SUBJECT', max_length=255, blank=True, null=True)   
