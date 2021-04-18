@@ -123,12 +123,39 @@
 							</header>
 							<div class="panel-body">
 								<div class="compose-mail">
-										
-										<form role="form-horizontal" method="post">
-											{% csrf_token %}
-											{{ form }}
-											<input type="submit" value="Envoyer"/>
-										</form>
+
+									{{ form.non_field_errors }}
+									<form role="form-horizontal" method="post">
+										{% csrf_token %}
+										<div class="fieldWrapper">
+											{{ form.subject.errors }}
+											Email subject:<label for="{{ form.subject.id_for_label }}"></label>
+											{{ form.subject }}
+										</div>
+
+										{{ form.as_p }}
+										<input type="submit" value="Envoyer"/>
+									</form>
+
+										<div class="compose-mail">
+											<form role="form-horizontal" method="post">
+												<div class="form-group">
+													<label for="to" class="">À :</label>
+													<input type="text" tabindex="1" id="to" class="form-control">
+													<div class="compose-options">
+												</div>
+												<div class="form-group">
+													<label for="subject" class="">Sujet :</label>
+													<input type="text" tabindex="1" id="subject" class="form-control">
+												</div>
+												<div class="compose-editor">
+													<textarea class="wysihtml5 form-control" rows="9"></textarea>
+												</div>
+												<div class="compose-btn">
+													<button class="btn btn-theme btn-sm"><i class="fa fa-check"></i> Envoyer</button>
+												</div>
+											</form>
+										</div>
 										<!--
 										<div class="form-group">
 											<label for="to" class="">À</label>

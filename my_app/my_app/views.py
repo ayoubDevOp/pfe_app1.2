@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 from django.http import HttpResponse, HttpResponseRedirect
+from .forms import *
 
 def login(request):
 	if request.method == 'POST':
@@ -162,7 +163,11 @@ def enseignant_mail_compose(request):
 		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
-		ctx = {'check_user' : check_user}
+		form = MessageForm(request.POST)
+		if form.is_valid():
+			form.save()
+		ctx = {'check_user' : check_user,
+				'form' : form}
 		return render(request, 'enseignant_mail_compose.html', ctx)
 	except:
 		return HttpResponse('login required')
