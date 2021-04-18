@@ -31,6 +31,7 @@ class Groupe(models.Model):
         return self.desig_grp
 
 class Eleve(models.Model): 
+    username_elv = models.CharField(db_column='USERNAME_ELV', max_length=255, blank=True, null=True) 
     nom_elv = models.CharField(db_column='NOM_ELV', max_length=255, blank=True, null=True)  
     pwd_elv = models.CharField(db_column='PWD_ELV', max_length=255, blank=True, null=True)   
     date_nai_elv = models.DateField(db_column='DATE_NAI_ELV', blank=True, null=True)  
@@ -44,6 +45,7 @@ class Eleve(models.Model):
         return self.nom_elv
 
 class Enseignant(models.Model):
+    username_ens = models.CharField(db_column='USERNAME_ENS', max_length=255, blank=True, null=True) 
     nom_ens = models.CharField(db_column='NOM_ENS', max_length=255, blank=True, null=True)  
     pwd_ens = models.CharField(db_column='PWD_ENS', max_length=255, blank=True, null=True)  
     date_nai_ens = models.DateField(db_column='DATE_NAI_ENS', blank=True, null=True)  

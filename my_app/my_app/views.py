@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 def login(request):
 	if request.method == 'POST':
@@ -12,9 +12,26 @@ def login(request):
 		if id_type == '1':
 			return HttpResponse('admin :'+uname +' '+pwd+' '+id_type)
 		elif id_type == '2':
-			return HttpResponse('enseignant :'+uname +' '+pwd+' '+id_type)
+			check_user_f = Enseignant.objects.filter(username_ens=uname)
+			check_user = check_user_f.first()
+			if check_user is None:
+				return HttpResponse('Username not found')
+			elif check_user.pwd_ens == pwd:
+				request.session['user'] = uname
+				return redirect('enseignant/acueil')
+			else:
+				return HttpResponse('Please enter valid Username or Password.')
 		elif id_type == '3':
-			return HttpResponse('eleve :'+uname +' '+pwd+' '+id_type)
+			check_user_f = Eleve.objects.filter(username_elv=uname)
+			check_user = check_user_f.first()
+			if check_user is None:
+				return HttpResponse('Username not found')
+			elif check_user.pwd_elv == pwd:
+				request.session['user'] = uname
+				return redirect('eleve/acueil')
+			else:
+				return HttpResponse('Please enter valid Username or Password.')
+			#return HttpResponse('eleve :'+uname +' '+pwd+' '+id_type)
 		else:
 			return HttpResponse('no id_type value returned'+uname +' '+pwd+' ')
 	else:
@@ -80,6 +97,13 @@ def adminstrator(request):
             'enseignants_result': enseignants_result,
             "score_result":score_result}
     return render(request,'admin.html',ctx)
+
+def logout(request):
+	try:
+		del request.session['user']
+	except:
+		return redirect('/login')
+	return redirect('/login')
 
 class EleveAPI(viewsets.ModelViewSet):
     serializer_class = EleveSerializer
