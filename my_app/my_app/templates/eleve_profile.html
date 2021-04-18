@@ -1,116 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>empCR eleve</title>
+	<head>
+		<meta charset="utf-8">
+		<title>empCR eleve</title>
 
 
 
-        {% load static %}
-        <link rel='stylesheet' href="{% static 'css/style.css' %}">
+		{% load static %}
+		<link rel='stylesheet' href="{% static 'css/style.css' %}">
 
-        <!-- Favicons -->
-        {% load static %}
-        <link href="{% static 'img/emp.jpg' %}" rel="icon">
+		<!-- Favicons -->
+		{% load static %}
+		<link href="{% static 'img/emp.jpg' %}" rel="icon">
 
-        <!-- Bootstrap core CSS -->
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
 
-        <!-- Custom styles for this template -->
-        <link href= "{% static 'css/style.css'%}" rel="stylesheet">
-        <link href= "{% static 'css/style-responsive.css' %}" rel="stylesheet">
-        <link href= "{% static 'css/font-awesome.css' %}" rel="stylesheet" />
+		<!-- Custom styles for this template -->
+		<link href= "{% static 'css/style.css'%}" rel="stylesheet">
+		<link href= "{% static 'css/style-responsive.css' %}" rel="stylesheet">
+		<link href= "{% static 'css/font-awesome.css' %}" rel="stylesheet" />
 
-        <!--external css-->
-        <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-        <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/style-responsive.css" rel="stylesheet">
-        <script src="lib/chart-master/Chart.js"></script>
+		<!--external css-->
+		<link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+		<!-- Custom styles for this template -->
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<script src="lib/chart-master/Chart.js"></script>
 
-    </head>
+	</head>
 
-    <body>
-        <section id="container">
-        <!-- ************************************************************************************************************
-        TOP BAR CONTENT & NOTIFICATIONS
-        ************************************************************************************************************* -->
-        <!--header start-->
-            <header class="header black-bg">
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars tooltips" data-placement="right" ></div>
-                </div>
-                <!--logo start-->
-                <a href="index.html" class="logo"><b>EMP<span>CR</span></b></a>
-                <!--logo end-->
-            
-                <div class="top-menu">
-                    <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
-                    </ul>
-                </div>
-            </header>
-        <!--header end-->
+	<body>
+		<section id="container">
+		<!-- ************************************************************************************************************
+		TOP BAR CONTENT & NOTIFICATIONS
+		************************************************************************************************************* -->
+		<!--header start-->
+			<header class="header black-bg">
+				<div class="sidebar-toggle-box">
+					<div class="fa fa-bars tooltips" data-placement="right" ></div>
+				</div>
+				<!--logo start-->
+				<a href="index.html" class="logo"><b>EMP<span>CR</span></b></a>
+				<!--logo end-->
+			
+				<div class="top-menu">
+					<ul class="nav pull-right top-menu">
+					<li><a class="logout" href="login.html">Logout</a></li>
+					</ul>
+				</div>
+			</header>
+		<!--header end-->
 
-        <!-- *************************************************************************************************************
-        MAIN SIDEBAR MENU
-        ************************************************************************************************************** -->
-        <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="profile.html"><img src="{% static 'img/uknown.jpg' %}" class="img-circle" width="80"></a></p>
-                <h5 class="centered">Elève 1</h5>
-                <li class="mt">
-                    <a class="active" href="/eleve/acueil">
-                        <i class="fa fa-home"></i>
-                        <span>Acueil</span>
-                    </a>
-                </li>
+		<!-- *************************************************************************************************************
+		MAIN SIDEBAR MENU
+		************************************************************************************************************** -->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+				<p class="centered"><a href="profile.html"><img src="{% static 'img/uknown.jpg' %}" class="img-circle" width="80"></a></p>
+				<h5 class="centered">{{ check_user.nom_elv}}</h5>
+				<li class="mt">
+					<a class="active" href="/eleve/acueil">
+						<i class="fa fa-home"></i>
+						<span>Acueil</span>
+					</a>
+				</li>
 
-                <li class="mt">
-                    <a href="/eleve/profile">
-                        <i class="fa fa-home"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
+				<li class="mt">
+					<a href="/eleve/profile">
+						<i class="fa fa-home"></i>
+						<span>Profile</span>
+					</a>
+				</li>
 
-                <li class="mt">
-                    <a href="/eleve/machine">
-                        <i class="fa fa-home"></i>
-                        <span>Machine</span>
-                    </a>
-                </li>
+				<li class="mt">
+					<a href="/eleve/machine">
+						<i class="fa fa-home"></i>
+						<span>Machine</span>
+					</a>
+				</li>
 
-                <li class="mt">
-                    <a href="/eleve/mail">
-                        <i class="fa fa-home"></i>
-                        <span>Mail</span>
-                    </a>
-                </li>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
-        <!--sidebar end-->
-        <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-        <!--main content start-->
-        <section id="main-content">
-            <section class="wrapper">
-                <div class="row">
-                    <div class="col-lg-9 main-chart">
-                        <div class="border-head">
-                            <h3>Eleve profile</h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- /row -->
-            </section>
-        </section>
-        <!--main content end-->
-    </body>
+				<li class="mt">
+					<a href="/eleve/mail">
+						<i class="fa fa-home"></i>
+						<span>Mail</span>
+					</a>
+				</li>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<!-- **********************************************************************************************************************************************************
+		MAIN CONTENT
+		*********************************************************************************************************************************************************** -->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row">
+					<div class="col-lg-9 main-chart">
+						<div class="border-head">
+							<h3>Eleve profile</h3>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</section>
+		</section>
+		<!--main content end-->
+	</body>
 </html>

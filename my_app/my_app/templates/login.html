@@ -2,66 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>empCR login</title>
+	<meta charset="utf-8">
+	<title>empCR login</title>
 
-    {% load static %}
-    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'css/style.css' %}">
 
-    <!-- Favicons -->
-    {% load static %}
-    <link href="{% static 'img/emp.jpg' %}" rel="icon">
+	<!-- Favicons -->
+	{% load static %}
+	<link href="{% static 'img/emp.jpg' %}" rel="icon">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
 
-    <!-- Custom styles for this template -->
-    <link href= "{% static 'css/style.css'%}" rel="stylesheet">
-    <link href= "{% static 'css//style-responsive.css' %}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href= "{% static 'css/style.css'%}" rel="stylesheet">
+	<link href= "{% static 'css//style-responsive.css' %}" rel="stylesheet">
 </head>
 
 <body>
-    <!-- **********************************************************************************************************************************************************
-    MAIN CONTENT
-    *********************************************************************************************************************************************************** -->
-    <div id="login-page">
-        <div class="container">
-            <!--header start-->
-            <header class="header black-bg">
-                <!--logo start-->
-                <a href="login.html" class="logo"><b>EMP<span>CR</span></b></a>
-                <!--logo end-->
-            </header>
-            <!--header end-->
+	<!-- **********************************************************************************************************************************************************
+	MAIN CONTENT
+	*********************************************************************************************************************************************************** -->
+	<div id="login-page">
+		<div class="container">
+			<!--header start-->
+			<header class="header black-bg">
+				<!--logo start-->
+				<a href="login.html" class="logo"><b>EMP<span>CR</span></b></a>
+				<!--logo end-->
+			</header>
+			<!--header end-->
 
-            <form method="POST" class="form-login">
-                {% csrf_token %}
-                <h2 class="form-login-heading">Se connecter maintenant</h2>
-                <div class="login-wrap">
-                    <input name="uname" type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
-                    <br>
-                    <input name="pwd" type="password" class="form-control" placeholder="Mot de passe">
-                    <br>
-                    <select name="id_type" class="form-control" required>
-                        <option value="1" >Administrateur</option>
-                        <option value="2" >Enseignant</option>
-                        <option value="3" >Elève</option>
-                    </select>
-                    <br>
-                    <button class="btn btn-theme btn-block" name="submit" value="Login" type="submit"> SE CONNECTER</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- js placed at the end of the document so the pages load faster -->
-    <!--
-        inutile
-        <script src= "{% static 'jquery/jquery.min.js' %}" ></script>
-        <script src= "{% static 'js/bootstrap.min.js' %}" ></script>
-    -->
+			<form method="POST" class="form-login">
+				{% csrf_token %}
+				<h2 class="form-login-heading">Se connecter maintenant</h2>
+				<div class="login-wrap">
+					<input name="uname" type="text" class="form-control" placeholder="Nom de l'utilisateur" autofocus>
+					<br>
+					<input name="pwd" type="password" class="form-control" placeholder="Mot de passe">
+					<br>
+					<select name="id_type" class="form-control" required>
+						<option value="1" >Administrateur</option>
+						<option value="2" >Enseignant</option>
+						<option value="3" >Elève</option>
+					</select>
+					<br>
+					<button class="btn btn-theme btn-block" name="submit" value="Login" type="submit"> SE CONNECTER</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--
+		inutile
+		<script src= "{% static 'jquery/jquery.min.js' %}" ></script>
+		<script src= "{% static 'js/bootstrap.min.js' %}" ></script>
+	-->
 
-    <!--BACKSTRETCH-->
-    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+	<!--BACKSTRETCH-->
+	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
 </body>
 
 </html>

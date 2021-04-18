@@ -39,17 +39,30 @@ def login(request):
 
 def eleve(request):
 	user = request.session['user']
-	check_user_f = Eleve.objects.filter(username_elv=uname)
+	check_user_f = Eleve.objects.filter(username_elv=user)
 	check_user = check_user_f.first()
-	return render(request, 'eleve.html', {})
+	ctx = {'check_user' : check_user}
+	return render(request, 'eleve.html', ctx)
 
 def eleve_profile(request):
+	user = request.session['user']
+	check_user_f = Eleve.objects.filter(username_elv=user)
+	check_user = check_user_f.first()
+	ctx = {'check_user' : check_user}
 	return render(request, 'eleve_profile.html', {})
 
 def eleve_machine(request):
+	user = request.session['user']
+	check_user_f = Eleve.objects.filter(username_elv=user)
+	check_user = check_user_f.first()
+	ctx = {'check_user' : check_user}
 	return render(request, 'eleve_machine.html', {})
 
 def eleve_mail(request):
+	user = request.session['user']
+	check_user_f = Eleve.objects.filter(username_elv=user)
+	check_user = check_user_f.first()
+	ctx = {'check_user' : check_user}
 	return render(request, 'eleve_mail.html', {})
 
 def enseignant(request):
