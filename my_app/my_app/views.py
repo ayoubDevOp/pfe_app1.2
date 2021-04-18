@@ -11,7 +11,16 @@ def login(request):
 		pwd = request.POST.get('pwd')
 		id_type = request.POST.get('id_type')
 		if id_type == '1':
-			return HttpResponse('admin :'+uname +' '+pwd+' '+id_type)
+			check_user_f = Admin.objects.filter(username_admin=uname)
+			check_user = check_user_f.first()
+			if check_user is None:
+				return HttpResponse('Username not found')
+			elif check_user.pwd_admin == pwd:
+				request.session['admin'] = uname
+				print("session created : " + request.session['admin'])
+				return redirect('adminstrator')
+			else:
+				return HttpResponse('Please enter valid Username or Password.')
 		elif id_type == '2':
 			check_user_f = Enseignant.objects.filter(username_ens=uname)
 			check_user = check_user_f.first()
@@ -19,7 +28,6 @@ def login(request):
 				return HttpResponse('Username not found')
 			elif check_user.pwd_ens == pwd:
 				request.session['ens'] = uname
-				print('login successed : '+request.session['ens'])
 				return redirect('enseignant/acueil')
 			else:
 				return HttpResponse('Please enter valid Username or Password.')
@@ -185,14 +193,22 @@ def enseignant_mail_compose(request):
 	ctx = {'form' : form}"""
 
 def adminstrator(request):
-	#eleve_result = Eleve.objects.filter(id_eleve=1)
-	eleve_result = Eleve.objects.all()
-	enseignants_result = Enseignant.objects.all()
-	score_result = Score.objects.all()
-	ctx = {'eleve_result' : eleve_result,
-			'enseignants_result': enseignants_result,
-			"score_result":score_result}
-	return render(request,'admin.html',ctx)
+	try:
+		user = request.session['admin']
+		check_user_f = Admin.objects.filter(username_admin=user)
+		print(check_user_f)
+		check_user = check_user_f.first()
+		print(check_user)
+		eleve_result = Eleve.objects.all()
+		enseignants_result = Enseignant.objects.all()
+		score_result = Score.objects.all()
+		ctx = {'eleve_result' : eleve_result,
+				'enseignants_result': enseignants_result,
+				"score_result":score_result,
+				'check_user':check_user}
+		return render(request,'admin.html',ctx)
+	except:
+		return HttpResponse('login required')
 
 def logout_elv(request):
 	try:
@@ -205,6 +221,14 @@ def logout_elv(request):
 def logout_ens(request):
 	try:
 		del request.session['ens']
+	except:
+		return redirect('/')
+	return redirect('/')
+
+def logout_admin(request):
+	try:
+		print("deleting session : " + request.session['admin'])
+		del request.session['admin']
 	except:
 		return redirect('/')
 	return redirect('/')

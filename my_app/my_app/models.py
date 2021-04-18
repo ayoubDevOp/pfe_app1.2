@@ -7,6 +7,19 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+class Admin(models.Model): 
+	username_admin = models.CharField(db_column='USERNAME_ADMIN', max_length=255, blank=True, null=True, unique=True) 
+	nom_admin = models.CharField(db_column='NOM_ADMIN', max_length=255, blank=True, null=True)  
+	pwd_admin = models.CharField(db_column='PWD_ADMIN', max_length=255, blank=True, null=True)   
+	date_nai_admin = models.DateField(db_column='DATE_NAI_ADMIN', blank=True, null=True)  
+
+	class Meta:
+		managed = True
+		db_table = 'ADMIN'
+		
+	def __str__(self):
+		return self.username_admin
+
 class Niveau(models.Model):
 	desig_nv = models.CharField(db_column='DESIG_NV', max_length=32, blank=True, null=True)  
 	desc_nv = models.CharField(db_column='DESC_NV', max_length=255, blank=True, null=True)  

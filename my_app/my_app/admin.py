@@ -4,6 +4,7 @@ from django.apps import apps
 # Register your models here.
 from . import *
 
+admin.site.register(models.Admin)
 admin.site.register(models.Eleve)
 admin.site.register(models.Enseignant)
 admin.site.register(models.Groupe)
