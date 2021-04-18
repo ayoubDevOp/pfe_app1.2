@@ -1,0 +1,11 @@
+
+	<h2>Sign Up : eleve</h2>
+	
+	<div style="margin-top: 50px;">
+		<form method="POST" class="post-form">  
+			{% csrf_token %}  
+			{{ form.as_p }}  
+			<button type="submit" class="save btn btn-default">Sauvegarder</button>  
+		</form>  
+	</div>
+

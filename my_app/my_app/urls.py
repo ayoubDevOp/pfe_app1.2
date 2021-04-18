@@ -54,4 +54,7 @@ urlpatterns = [
 	path('logout_elv/', views.logout_elv, name='logout_elv'),
 	path('logout_ens/', views.logout_ens, name='logout_ens'),
 	path('logout_admin/', views.logout_admin, name='logout_admin'),
+	path('sign_up_admin/', views.sign_up_admin, name='sign_up_admin'),
+	path('sign_up_eleve/', views.sign_up_eleve, name='sign_up_eleve'),
+	path('sign_up_ens/', views.sign_up_ens, name='sign_up_ens'),
 ]

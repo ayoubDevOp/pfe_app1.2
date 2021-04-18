@@ -5,6 +5,25 @@ from .serializers import *
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
 
+def sign_up_admin(request):
+	form = AdminForm(request.POST)
+	if form.is_valid():
+		form.save()
+	return render(request, 'signup_admin.html', {'form' : form})
+
+def sign_up_ens(request):
+	form = EnseignantForm(request.POST)
+	if form.is_valid():
+		form.save()
+	return render(request, 'signup_ens.html', {'form' : form})
+
+def sign_up_eleve(request):
+	form = EleveForm(request.POST)
+	if form.is_valid():
+		form.save()
+	return render(request, 'signup_eleve.html', {'form' : form})
+
+
 def login(request):
 	if request.method == 'POST':
 		uname = request.POST.get('uname')
@@ -45,7 +64,7 @@ def login(request):
 		else:
 			return HttpResponse('no id_type value returned'+uname +' '+pwd+' ')
 	else:
-		return render(request, 'login.html', {})
+		return render(request, 'login.html')
 
 def eleve(request):
 	try:
