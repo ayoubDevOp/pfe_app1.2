@@ -150,6 +150,7 @@ def enseignant_mail_sent(request):   #sent
 		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
+		msgs_result = Message.objects.filter(type=1)
 		ctx = {'check_user' : check_user,
 				'msgs_result' : msgs_result}
 		return render(request, 'enseignant_mail_sent.html', ctx)
