@@ -45,7 +45,7 @@ def eleve(request):
 		ctx = {'check_user' : check_user}
 		return render(request, 'eleve.html', ctx)
 	except:
-		return HttpResponse('login requiered')
+		return HttpResponse('login required')
 
 
 def eleve_profile(request):
@@ -56,7 +56,7 @@ def eleve_profile(request):
 		ctx = {'check_user' : check_user}
 		return render(request, 'eleve_profile.html', ctx)
 	except:
-		return HttpResponse('login requiered')
+		return HttpResponse('login required')
 
 
 def eleve_machine(request):
@@ -67,7 +67,7 @@ def eleve_machine(request):
 		ctx = {'check_user' : check_user}
 		return render(request, 'eleve_machine.html', ctx)
 	except:
-		return HttpResponse('login requiered')
+		return HttpResponse('login required')
 
 def eleve_mail(request):
 	try:
@@ -77,33 +77,93 @@ def eleve_mail(request):
 		ctx = {'check_user' : check_user}
 		return render(request, 'eleve_mail.html', ctx)
 	except:
-		return HttpResponse('login requiered')	
+		return HttpResponse('login required')	
 
 def enseignant(request):
-	return render(request, 'enseignant.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'enseignant.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_exercices(request):
-	return render(request, 'enseignant_exercices.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'enseignant_exercices.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_instances(request):
-	return render(request, 'enseignant_instances.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'enseignant_instances.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_images(request):
-	vm_result = Virtualmachine.objects.all()
-	return render(request, 'enseignant_images.html', { 'vm_result' : vm_result })
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		vm_result = Virtualmachine.objects.all()
+		ctx = {'check_user' : check_user,
+				'vm_result' : vm_result }
+		return render(request, 'enseignant.html', ctx)
+	except:
+		return HttpResponse('login required')
+
 
 def enseignant_supervision(request):
-	return render(request, 'enseignant_supervision.html', {})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'enseignant_supervision.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_mail(request):   #recieved
-	msgs_result = Message.objects.filter(type=0)
-	return render(request, 'enseignant_mail.html', {'msgs_result' : msgs_result})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		msgs_result = Message.objects.filter(type=0)
+		ctx = {'check_user' : check_user,
+				'msgs_result' : msgs_result}
+		return render(request, 'enseignant_mail.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_mail_sent(request):   #sent
-	msgs_result = Message.objects.filter(type=1)
-	return render(request, 'enseignant_mail_sent.html', {'msgs_result' : msgs_result})
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user,
+				'msgs_result' : msgs_result}
+		return render(request, 'enseignant_mail_sent.html', ctx)
+	except:
+		return HttpResponse('login required')
 
 def enseignant_mail_compose(request):
+	try:
+		user = request.session['user']
+		check_user_f = Enseignant.objects.filter(username_ens=user)
+		check_user = check_user_f.first()
+		ctx = {'check_user' : check_user}
+		return render(request, 'enseignant_mail_compose.html', ctx)
+	except:
+		return HttpResponse('login required')
 	"""if request.method == "POST":
 		form = MessageForm(request.POST)
 		if form.is_valid():
@@ -116,7 +176,6 @@ def enseignant_mail_compose(request):
 	else :
 		form = MessageForm()
 	ctx = {'form' : form}"""
-	return render(request, 'enseignant_mail_compose.html' , ctx)
 
 def adminstrator(request):
 	#eleve_result = Eleve.objects.filter(id_eleve=1)
@@ -132,8 +191,8 @@ def logout(request):
 	try:
 		del request.session['user']
 	except:
-		return redirect('/login')
-	return redirect('/login')
+		return redirect('/')
+	return redirect('/')
 
 class EleveAPI(viewsets.ModelViewSet):
 	serializer_class = EleveSerializer
