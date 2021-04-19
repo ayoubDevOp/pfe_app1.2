@@ -29,6 +29,42 @@ def login(request):
 		uname = request.POST.get('uname')
 		pwd = request.POST.get('pwd')
 		id_type = request.POST.get('id_type')
+		check_user_f = Admin.objects.filter(username_admin=uname)
+		check_user = check_user_f.first()
+		if check_user is None:
+			# check if enseignant
+			check_user_f = Enseignant.objects.filter(username_ens=uname)
+			check_user = check_user_f.first()
+			if check_user is None:
+				#check if eleve
+				check_user_f = Eleve.objects.filter(username_elv=uname)
+				check_user = check_user_f.first()
+				if check_user is None:
+					return HttpResponse('Username not found')
+				elif check_user.pwd_elv == pwd:
+					request.session['elv'] = uname
+					return redirect('eleve/acueil')
+				else:
+					return HttpResponse('Please enter valid Username or Password.')
+			elif check_user.pwd_ens == pwd:
+				request.session['ens'] = uname
+				return redirect('enseignant/acueil')
+			else:
+				return HttpResponse('Please enter valid Username or Password.')
+		elif check_user.pwd_admin == pwd:
+			request.session['admin'] = uname
+			print("session created : " + request.session['admin'])
+			return redirect('adminstrator')
+		else:
+			return HttpResponse('Please enter valid Username or Password.')
+	else:
+		return render(request, 'login.html')
+
+def login2(request):
+	if request.method == 'POST':
+		uname = request.POST.get('uname')
+		pwd = request.POST.get('pwd')
+		id_type = request.POST.get('id_type')
 		if id_type == '1':
 			check_user_f = Admin.objects.filter(username_admin=uname)
 			check_user = check_user_f.first()
