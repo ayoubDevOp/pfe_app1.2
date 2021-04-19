@@ -16,11 +16,12 @@
 		<!-- Custom styles for this template -->
 		<link href= "{% static 'css/style.css'%}" rel="stylesheet">
 		<link href= "{% static 'css/style-responsive.css' %}" rel="stylesheet">
-		<link
-			rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-			integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-			crossorigin="anonymous"
+
+		<link 
+			rel="stylesheet" 
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css" i
+			ntegrity="sha512-72McA95q/YhjwmWFMGe8RI3aZIMCTJWPBbV8iQY3jy1z9+bi6+jHnERuNrDPo/WGYEzzNs4WdHNyyEr/yXJ9pA==" 
+			crossorigin="anonymous" 
 		/>
 
 		<!--external css-->
@@ -110,9 +111,38 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="row">
-					<div class="col-lg-9 main-chart">
+					<div class="col-lg-12 main-chart">
 						<div class="border-head">
-							<h3>Bienvenue Enseignant</h3>
+							<h2>Bienvenue Enseignant</h2>
+							<hr>
+						</div>
+						<div class="col-md-12">
+							<div class="content-panel">
+								<h4> Les exercices </h4>
+								<hr>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Exercice</th>
+											<th>Description</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in exercice_ress %}
+										<tr>
+											<td>{{ item.desig_ex }}</td>
+											<td>{{ item.descr_ex }}</td>
+											<td style="width: 200px;">
+												<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+												<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+												<button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+											</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -159,7 +159,11 @@ def enseignant_exercices(request):
 		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
-		ctx = {'check_user' : check_user}
+		repert_f = Repertoire.objects.filter(enseignant=check_user)
+		repert = repert_f.first()
+		exercice_ress = Exercice.objects.filter(repertoire=repert)
+		ctx = {'check_user' : check_user,
+			'exercice_ress' : exercice_ress}
 		return render(request, 'enseignant_exercices.html', ctx)
 	except:
 		return HttpResponse('login required')
