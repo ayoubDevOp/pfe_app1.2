@@ -173,7 +173,11 @@ def enseignant_instances(request):
 		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
-		ctx = {'check_user' : check_user}
+		repert_f = Repertoire.objects.filter(enseignant=check_user)
+		repert = repert_f.first()
+		instance_ress = Instance.objects.filter(repertoire=repert)
+		ctx = {'check_user' : check_user,
+				'instance_ress' : instance_ress}
 		return render(request, 'enseignant_instances.html', ctx)
 	except:
 		return HttpResponse('login required')

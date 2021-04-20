@@ -110,9 +110,43 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="row">
-					<div class="col-lg-9 main-chart">
+					<div class="col-lg-12 main-chart">
 						<div class="border-head">
-							<h3>Bienvenue {{ check_user.nom_ens}}</h3>
+							<h2>Bienvenue {{ check_user.nom_ens}}</h2>
+							<hr>
+						</div>
+						<div class="col-md-12">
+							<div class="content-panel">
+								<h4> Les instances </h4>
+								<hr>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Exercice</th>
+											<th>Instance</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in instance_ress %}
+										<tr>
+											<td>{{ item.exercice }}</td>
+											<td id="desig" >{{ item.desig_ins }}</td>
+											<td>
+												<button class="btn btn-info btn-xl" onclick="clickHandler"><i class="fa fa-plus"></i></button>											</td>
+												<script>
+													function clickHandler(){
+														console.log("test");
+														var va = document.getElementById("desig");
+														console.log(va);
+													}
+												</script>
+											</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

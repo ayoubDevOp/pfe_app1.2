@@ -127,17 +127,11 @@
 									{{ form.non_field_errors }}
 									<form role="form-horizontal" method="post">
 										{% csrf_token %}
-										<div class="fieldWrapper form-group">
-											
-											<label for="to" class="">À :</label>
-											<label class="form-control" for="{{ form.subject }}"></label>
-											
-										</div>
-
-
-										{{ form.as_p }}
-										<input type="submit" value="Envoyer"/>
+										{{ form.as_table }}
+										<button type="submit">Envoyer</button>
 									</form>
+
+									<hr>
 
 										<div class="compose-mail">
 											<form role="form-horizontal" method="post">
