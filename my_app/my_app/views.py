@@ -186,7 +186,7 @@ def enseignant_images(request):
 		vm_result = Virtualmachine.objects.all()
 		ctx = {'check_user' : check_user,
 				'vm_result' : vm_result }
-		return render(request, 'enseignant.html', ctx)
+		return render(request, 'enseignant_images.html', ctx)
 	except:
 		return HttpResponse('login required')
 
