@@ -162,8 +162,12 @@ def enseignant_exercices(request):
 		repert_f = Repertoire.objects.filter(enseignant=check_user)
 		repert = repert_f.first()
 		exercice_ress = Exercice.objects.filter(repertoire=repert)
+		form = ExerciceForm(request.POST)
+		if form.is_valid():
+			form.save()
 		ctx = {'check_user' : check_user,
-			'exercice_ress' : exercice_ress}
+			'exercice_ress' : exercice_ress,
+			'form' : form}
 		return render(request, 'enseignant_exercices.html', ctx)
 	except:
 		return HttpResponse('login required')

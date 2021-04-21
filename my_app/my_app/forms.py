@@ -10,6 +10,11 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = "__all__"
 
+class ExerciceForm(forms.ModelForm):
+    class Meta:
+        model = Exercice
+        fields = "__all__"
+
 class AdminForm(forms.ModelForm):
     class Meta:
         model = Admin

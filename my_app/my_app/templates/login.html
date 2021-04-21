@@ -11,7 +11,7 @@
 	<!-- Favicons -->
 	{% load static %}
 	<link href="{% static 'img/emp.jpg' %}" rel="icon">
-
+	{% load static %}
 	<!-- Bootstrap core CSS -->
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
 	<link 
@@ -23,7 +23,7 @@
 
 	<!-- Custom styles for this template -->
 	<link href= "{% static 'css/style.css'%}" rel="stylesheet">
-	<link href= "{% static 'css//style-responsive.css' %}" rel="stylesheet">
+	<link href= "{% static 'css/style-responsive.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -74,15 +74,16 @@
 
 		</div>
 	</div>
-	<!-- js placed at the end of the document so the pages load faster -->
-	<!--
-		inutile
-		<script src= "{% static 'jquery/jquery.min.js' %}" ></script>
-		<script src= "{% static 'js/bootstrap.min.js' %}" ></script>
-	-->
-
-	<!--BACKSTRETCH-->
-	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+		<!-- js placed at the end of the document so the pages load faster -->
+		<script href= "{% static 'jquery/jquery.min.js' %}" ></script>
+		<!--BACKSTRETCH-->
+		<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+		<script type="text/javascript" href= "{% static 'jquery/jquery.backstretch.min.js' %}"></script>
+		<script>
+			$.backstretch("img/CyberRange.jpg", {
+			speed: 500
+			});
+		</script>
 </body>
 
 </html>

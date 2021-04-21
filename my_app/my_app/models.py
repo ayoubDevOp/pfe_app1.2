@@ -101,7 +101,9 @@ class Repertoire(models.Model):
 class Exercice(models.Model): 
 	desig_ex = models.CharField(db_column='DESIG',max_length=255, blank=True, null=True) 
 	descr_ex = models.TextField(db_column='DESCR', blank=True, null=True)  
-	lien = models.CharField(db_column='LIEN', max_length=255, blank=True, null=True)  
+	lien = models.CharField(db_column='LIEN', max_length=255, blank=True, null=True) 
+	json_file = models.TextField(db_column='JSON_FILE', blank=True, null=True)
+	but = models.CharField(db_column='BUT',max_length=255, blank=True, null=True)
 	repertoire = models.ForeignKey(Repertoire, on_delete=models.CASCADE)
 	
 	class Meta:
