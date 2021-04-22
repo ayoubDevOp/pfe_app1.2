@@ -292,8 +292,29 @@
 	
 	<form method="POST"  class="post-form modal-content animate">  
 		{% csrf_token %}  
-		{{ form.as_table }}  
-		<button type="submit" class="save btn btn-default">Sauvegarder</button>  
+		<div>
+			{{ form.desig_ex}}  
+		</div>
+
+		<div>
+			{{ form.descr_ex}} 
+		</div>
+
+		<div>
+			{{ form.lien}} 
+		</div>
+
+		<div>
+			{{ form.json_file}}  
+		</div>
+
+		<div >
+			{{ form.but}}  
+		</div>
+		<div>
+			{{ form.repertoire}} 
+		</div>
+		<button type="submit" class="btn btn-theme03">Sauvegarder</button>  
 	</form>  
 </div>
 

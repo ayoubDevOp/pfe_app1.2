@@ -11,6 +11,48 @@ class MessageForm(forms.ModelForm):
         fields = "__all__"
 
 class ExerciceForm(forms.ModelForm):
+    
+    desig_ex = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Designation",
+                "class": "form-control"
+            }
+        ))
+
+
+    descr_ex = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "Desctription",
+                "class": "form-control"
+            }
+        ))
+
+    lien = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Lien",
+                "class": "form-control"
+            }
+        ))
+    
+    json_file = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "Json",
+                "class": "form-control"
+            }
+        ))
+
+    but = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "but de TP",
+                "class": "form-control"
+            }
+        ))
+
     class Meta:
         model = Exercice
         fields = "__all__"
