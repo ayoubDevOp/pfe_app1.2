@@ -4,7 +4,7 @@ from .models import *
 from .serializers import *
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
-from bissness.dict_to_json import dict_to_json
+from business.dict_to_json import dict_to_json
 import requests
 
 
