@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Environment Creation</title>
+    <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+</head>
+<body>
+
+<h2>Create Virtual Environment</h2>
+
+<button class="button1" onclick="createButton()" style="width:auto;">Create</button>
+
+<div id="id01" class="modal">
+    <form id="form-id" name="yourForm" class="modal-content animeate" method="POST">
+        {% csrf_token %}
+    </form>
+</div>
+
+<script>
+    function createButton() {
+        document.getElementById('id01').style.display = 'block'
+        let oncloseFunction = function () {
+
+            document.getElementById('id01').style.display = 'none';
+        };
+        new Form(document.getElementById('form-id'), oncloseFunction).createForm();
+    }
+</script>
+<script src="{% static 'js/Form.js' %}"></script>
+<script src="{% static 'js/TabVM.js' %}"></script>
+<script src="{% static 'js/TabNetwork.js' %}"></script>
+<script src="{% static 'js/utilitise.js' %}"></script>
+<script src="{% static 'js/TabDocker.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full-width input fields */
+input[type=text], textarea, input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+option {
+    margin: 12px;
+}
+
+select {
+    background-color: white;
+}
+
+/* Set a style for all buttons */
+.button1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button1:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.addbtn {
+    width: auto;
+    padding: 10px 18px;
+    margin-left: 5px;
+    float: right;
+    background-color: #4CAF50;
+}
+
+.container {
+    padding: 16px;
+}
+
+.network-container, .docker-container {
+    /*padding-top: 16px;*/
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    /*overflow: auto; !* Enable scroll if needed *!*/
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    /*padding-top: 60px;*/
+    /*scroll-behavior: smooth;*/
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    /*height: 300px;*/
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* Style the tabs */
+.tab-vm, .tab-network, .tab-docker {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab-vm button, .tab-network button, .tab-docker button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    /*font-size: 17px;*/
+}
+
+/* Change background color of buttons on hover */
+.tab-vm button:hover, .tab-network button:hover, .tab-docker button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab-vm button.active, .tab-network button.active, .tab-docker button.active{
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabContent-vm {
+    display: none;
+    padding: 12px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    height: 400px;
+}
+
+/*.tabContent-network {*/
+/*    display: none;*/
+/*    padding: 12px 12px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-top: none;*/
+/*    !*scroll-behavior: smooth;*!*/
+/*    !*overflow-y: auto;*!*/
+/*}*/
+
