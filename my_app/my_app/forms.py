@@ -6,8 +6,10 @@ from .models import *
 
 # create a ModelForm
 class MessageForm(forms.ModelForm):
-
-	subject = forms.CharField(
+	class Meta:
+		model = Message
+		fields = "__all__"
+	"""subject = forms.CharField(
 		widget=forms.TextInput(
 			attrs={
 				"placeholder": "Sujet",
@@ -21,11 +23,9 @@ class MessageForm(forms.ModelForm):
 				"placeholder": "content",
 				"class": "form-control"
 			}
-		))
+		))"""
 
-	class Meta:
-		model = Message
-		fields = "__all__"
+
 
 class ExerciceForm(forms.ModelForm):
 	

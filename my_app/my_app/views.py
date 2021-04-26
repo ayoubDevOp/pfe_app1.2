@@ -215,7 +215,9 @@ def enseignant_mail(request):   #recieved
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		msgs_result = Message.objects.filter(type=0)
-		form = MessageForm()
+		form = MessageForm(request.POST)
+		if form.is_valid():
+			form.save()
 		ctx = {'check_user' : check_user,
 				'msgs_result' : msgs_result,
 				'form' : form}
@@ -229,8 +231,12 @@ def enseignant_mail_sent(request):   #sent
 		check_user_f = Enseignant.objects.filter(username_ens=user)
 		check_user = check_user_f.first()
 		msgs_result = Message.objects.filter(type=1)
+		form = MessageForm(request.POST)
+		if form.is_valid():
+			form.save()
 		ctx = {'check_user' : check_user,
-				'msgs_result' : msgs_result}
+				'msgs_result' : msgs_result,
+				'form' : form}
 		return render(request, 'enseignant_mail_sent.html', ctx)
 	except:
 		return HttpResponse('login required')

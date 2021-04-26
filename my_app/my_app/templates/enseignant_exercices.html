@@ -315,48 +315,44 @@
 			</section>
 
 
-<div id="id01" class="modal showback">
-	
-	<form method="POST"  class="post-form modal-content animate">  
-		{% csrf_token %}  
-		<div>
-			{{ form.desig_ex}}  
-		</div>
+			<div id="id01" class="modal showback">
+				
+				<form method="POST"  class="post-form modal-content animate">  
+					{% csrf_token %}  
+					<div>
+						{{ form.desig_ex}}  
+					</div>
+					<div>
+						{{ form.descr_ex}} 
+					</div>
+					<div>
+						{{ form.lien}} 
+					</div>
+					<div>
+						{{ form.json_file}}  
+					</div>
+					<div >
+						{{ form.but}}  
+					</div>
+					<div>
+						{{ form.repertoire}} 
+					</div>
+					<button type="submit" class="btn btn-theme03">Sauvegarder</button>  
+				</form>  
+			</div>
 
-		<div>
-			{{ form.descr_ex}} 
-		</div>
+			<script>
+			// Get the modal
+			var modal = document.getElementById('id01');
 
-		<div>
-			{{ form.lien}} 
-		</div>
-
-		<div>
-			{{ form.json_file}}  
-		</div>
-
-		<div >
-			{{ form.but}}  
-		</div>
-		<div>
-			{{ form.repertoire}} 
-		</div>
-		<button type="submit" class="btn btn-theme03">Sauvegarder</button>  
-	</form>  
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+			</script>
 		</section>
-		<!--main content end-->
+				<!--main content end-->
 	</body>
 </html>

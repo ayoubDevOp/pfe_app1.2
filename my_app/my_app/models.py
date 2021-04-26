@@ -79,7 +79,6 @@ class Message(models.Model):
 	enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE) 
 
 	class Meta:
-		managed = True
 		db_table = 'MESSAGE'
 	
 	def __str__(self):
