@@ -115,7 +115,7 @@ class Exercice(models.Model):
 
 class Instance(models.Model):
 	desig_ins = models.CharField(db_column='DESIG', max_length=255, blank=True, null=True) 
-	descr_ins = models.TextField(db_column='DESCR', blank=True, null=True)   
+	#descr_ins = models.TextField(db_column='DESCR', blank=True, null=True)   
 	lien = models.CharField(db_column='LIEN', max_length=255, blank=True, null=True)
 	outputgeneration = models.TextField(db_column='outputGeneration', blank=True, null=True)   
 	repertoire = models.ForeignKey(Repertoire, on_delete=models.CASCADE)

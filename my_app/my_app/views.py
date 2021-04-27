@@ -47,6 +47,7 @@ def sign_up_ens(request):
 
 def sign_up_eleve(request):
 	form = EleveForm(request.POST)
+	print(request.POST)
 	if form.is_valid():
 		form.save()
 	return render(request, 'signup_eleve.html', {'form' : form})
