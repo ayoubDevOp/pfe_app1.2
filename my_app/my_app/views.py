@@ -30,6 +30,15 @@ def index(request):
     return render(request, "index.html")
 
 
+def add_instance(request, id):
+	exo = Exercice.objects.get(pk=id)
+	ins = Instance(desig_ins=exo.desig_ex, lien="some links", exercice=exo, repertoire = exo.repertoire)
+	print(ins)
+	ins.save()
+	print("saved") 
+	return HttpResponseRedirect('/enseignant/exercices')
+
+
 def done(request):
     return HttpResponse("done")
 

@@ -126,7 +126,7 @@ class Instance(models.Model):
 		db_table = 'INSTANCE'
 
 	def __str__(self):
-		return self.descr_ins
+		return self.desig_ins
 
 class Virtualmachine(models.Model):
 	desig_vm = models.CharField(db_column='DESIG_VM', max_length=255, blank=True, null=True)  

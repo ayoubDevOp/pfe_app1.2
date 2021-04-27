@@ -14,6 +14,7 @@ Including another URLconf
 	2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import url
 from django.urls import path, include
 from rest_framework import routers
 from my_app import views
@@ -59,4 +60,5 @@ urlpatterns = [
 	path('sign_up_ens/', views.sign_up_ens, name='sign_up_ens'),
 	path('index/', views.index),
 	path('done', views.done),
+	url(r'^add_instance/(?P<id>\d+)/$',views.add_instance, name='add_instance'),
 ]
