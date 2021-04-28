@@ -110,9 +110,38 @@
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="row">
-					<div class="col-lg-9 main-chart">
+					<div class="col-lg-12 main-chart">
 						<div class="border-head">
-							<h3>Bienvenue {{ check_user.nom_ens}}</h3>
+							<h2>Bienvenue {{ check_user.nom_ens}}</h2>
+							<hr>
+						</div>
+						<div class="col-md-12 mt">
+							<div class="content-panel">
+								<h4> Les scores</h4>
+								<hr></i>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Nom</th>
+											<th>Resultat</th>
+											<th>Exercice</th>
+											<th>Temps</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in score_result %}
+										<tr>
+											<td>{{ item.id_score }}</td>
+											<td>{{ item.eleve }}</td>
+											<td>{{ item.value }}</td>
+											<td>{{ item.instance }}</td>
+											<td>{{ item.at_time }}</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

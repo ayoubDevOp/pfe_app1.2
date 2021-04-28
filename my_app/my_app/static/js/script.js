@@ -13,6 +13,12 @@ function clickHandler(event) {
 	xmlHttp.send(null);
 	va = xmlHttp.responseText;
 	var jsonData = JSON.parse(va);
+	console.log(jsonData[0].json_file);
+
+
+	//send json file to start craeting 
+
+	/*
 	var exer_id = jsonData[0].id;
 	var rep_id = jsonData[0].repertoire;
 	var exer_desig = jsonData[0].desig_ex;
@@ -61,7 +67,7 @@ function clickHandler(event) {
 			"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
 		},
 		body: formBody,
-	});
+	});*/
 }
 
 function getCookie(name) {

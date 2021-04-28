@@ -241,8 +241,10 @@ def enseignant_supervision(request):
 	try:
 		user = request.session['ens']
 		check_user_f = Enseignant.objects.filter(username_ens=user)
+		score_result = Score.objects.all()
 		check_user = check_user_f.first()
-		ctx = {'check_user' : check_user}
+		ctx = {'check_user' : check_user,
+				'score_result' : score_result}
 		return render(request, 'enseignant_supervision.html', ctx)
 	except:
 		return HttpResponse('login required')
