@@ -257,7 +257,11 @@ def enseignant_mail(request):   #recieved
 		msgs_result = Message.objects.filter(type=0)
 		form = MessageForm(request.POST)
 		if form.is_valid():
+			#form.type = 0
+			print(form)
 			form.save()
+		else :
+			print("message not valid")
 		ctx = {'check_user' : check_user,
 				'msgs_result' : msgs_result,
 				'form' : form}
